@@ -14,8 +14,8 @@ const Contact = () => {
   const contactLinkStyles = "bg-ui-surface w-full p-3 flex items-center justify-between gap-5 text-md hover:bg-brand-emphasis transition";
 
   return (
-    <section id="contact" className="w-full pb-10">
-      <ScrollFloat containerClassName="mb-10 flex flex-col gap-1">{contactContent.callToAction.question}<span className="mb-10 text-brand inline-block w-fit">{contactContent.callToAction.action}</span></ScrollFloat>
+    <section id="contact" className="w-full mb-10">
+      <ScrollFloat containerClassName="mb-10 flex flex-col gap-1 lg:text-[5rem]">{contactContent.callToAction.question}<span className="mb-10 text-brand inline-block w-fit">{contactContent.callToAction.action}</span></ScrollFloat>
       <div className="grid gap-5 lg:w-100">
         <ContactLink styles={`${contactLinkStyles}`} url={contactContent.email}>
           <Icon style="" name="gmail"/>

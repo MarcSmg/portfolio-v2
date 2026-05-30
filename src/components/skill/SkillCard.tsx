@@ -8,22 +8,21 @@ interface SkillProps {
   children?: React.ReactNode,
   skill: SkillObject,
   index: number,
+  isContainerVisible: boolean,
 }
 
-const SkillCard = ({ children, skill, index }: SkillProps) => {
+const SkillCard = ({ children, skill, index, isContainerVisible }: SkillProps) => {
 
-  const { ref, isVisible } = useInView();
-  const level = isVisible && skill.level ? skill.level : 0;
+  const level = isContainerVisible && skill.level ? skill.level : 0;
 
   const hoverStyles = " transition-all duration-100 shadow-brand-emphasis hover:border-brand hover:shadow-lg transition-all duration-200 ease-in-out";
 
   return (
 
     <div
-      ref={ref}
       style={{ '--delay': `${index * 80}ms` } as React.CSSProperties}
       className={`
-    ${hoverStyles} ${isVisible ? 'animate-fade-in-up' : 'translate-y-20'}
+    ${hoverStyles} ${isContainerVisible ? 'animate-fade-in-up' : 'translate-y-20'}
     opacity-0 
     flex gap-5 items-center justify-between text-center bg-ui-surface border border-brand-muted py-7 px-5 rounded-xl w-full h-fit 
     transition-all duration-300 [animation-delay:var(--delay)]

@@ -19,14 +19,14 @@ const Avatar = () => {
   return (
     <div ref={ref} className={` ${isVisible ? 'animate-fade-in-right' : ''} relative flex flex-col w-[90%] justify-center items-center gap-4 overflow-hidden px-5 py-7 opacity-0 bg-linear-to-r from-brand-muted from-[-150%] to-ui-surface rounded-2xl lg:w-[40%]`}>
       <Noise
-        patternSize={280}
+        patternSize={200}
         patternScaleX={1}
         patternScaleY={1}
         patternRefreshInterval={2}
         patternAlpha={12}
       />
       
-      <Image className="relative rounded-2xl size-[80%] object-cover lg:size-80" src="/images/avatar.jpg" alt="" width={320} height={320} />
+      <Image className="relative rounded-2xl size-[80%] object-cover lg:size-80" src="/images/avatar.jpg" alt="" width={320} height={320} priority/>
       
       <ContactLink styles="relative px-3 py-3 flex items-center justify-between gap-2 before:absolute before:inset-10 before:rounded-lg before:bg-accent/80 before:opacity-0 before:transition-all hover:before:opacity-100 hover:before:inset-0 duration-100" url={contactContent.email}>
         

@@ -10,7 +10,8 @@ interface ProjectProps {
   project: ProjectContent,
   onOpenDetails: () => void,
   onCloseDetails: () => void,
-  children?: React.ReactNode;
+  children?: React.ReactNode,
+  isContainerVisible?: boolean,
 }
 
 const statuses = {
@@ -19,14 +20,12 @@ const statuses = {
   "completed": "Completed"
 };
 
-const ProjectCard = ({ project, onOpenDetails }: ProjectProps) => {
-  const { ref, isVisible } = useInView();
-
+const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProps) => {
 
   return (
     <>
-      <div ref={ref} className={` 
-          ${isVisible ? 'animate-fade-in-up' : 'translate-y-20'}
+      <div className={` 
+          ${isContainerVisible ? 'animate-fade-in-up' : 'translate-y-20'}
           opacity-0
           w-full h-full
           bg-ui-surface border outline-5 border-brand-muted px-5 py-10 rounded-2xl
