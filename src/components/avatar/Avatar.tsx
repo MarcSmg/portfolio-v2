@@ -1,0 +1,57 @@
+"use client"
+
+import ContactLink from "../ui/ContactLink"
+import { useContent } from "@/context/ContentContext";
+import { FaWhatsapp } from "react-icons/fa";
+import { MdMail } from "react-icons/md";
+import { LuGithub, LuLinkedin } from "react-icons/lu";
+import { useInView } from "@/hooks/useInVIew";
+import Noise from "../ui/Noise";
+import Image from "next/image";
+
+const Avatar = () => {
+    const {content} = useContent();
+    const contactContent = content.contactContent;
+    const contactLinkStyles = "relative flex flex-col items-center justify-center items-center gap-2 p-2 border-1 border-brand-muted rounded-full before:absolute before:inset-10 before:rounded-full before:bg-accent/80 before:opacity-0 before:transition-all hover:before:opacity-100 hover:before:inset-0 duration-100"
+
+    const {ref, isVisible} = useInView();
+
+  return (
+    <div ref={ref} className={` ${isVisible ? 'animate-fade-in-right' : ''} relative flex flex-col w-[90%] justify-center items-center gap-4 overflow-hidden px-5 py-7 opacity-0 bg-linear-to-r from-brand-muted from-[-150%] to-ui-surface rounded-2xl lg:w-[40%]`}>
+      <Noise
+        patternSize={280}
+        patternScaleX={1}
+        patternScaleY={1}
+        patternRefreshInterval={2}
+        patternAlpha={12}
+      />
+      
+      <Image className="relative rounded-2xl size-[80%] object-cover lg:size-80" src="/images/avatar.jpg" alt="" width={320} height={320} />
+      
+      <ContactLink styles="relative px-3 py-3 flex items-center justify-between gap-2 before:absolute before:inset-10 before:rounded-lg before:bg-accent/80 before:opacity-0 before:transition-all hover:before:opacity-100 hover:before:inset-0 duration-100" url={contactContent.email}>
+        
+        <MdMail className="fill-white relative size-6"/>
+        <span className="relative">dossagaby@gmail.com</span> 
+
+      </ContactLink>
+
+      <div className="flex justify-between gap-10 px-3">
+
+        <ContactLink styles={`${contactLinkStyles} p-3`} url={contactContent.linkedin}>
+          <LuLinkedin className=" relative size-6"/>
+        </ContactLink>
+
+        <ContactLink styles={`${contactLinkStyles} p-3`} url={contactContent.github}>
+          <LuGithub className=" relative size-6"/>
+        </ContactLink>
+
+        <ContactLink styles={`${contactLinkStyles} p-3`} url={contactContent.whatsapp}>
+          <FaWhatsapp className="fill-white relative size-6"/>
+        </ContactLink>
+
+      </div>
+    </div>
+  )
+}
+
+export default Avatar

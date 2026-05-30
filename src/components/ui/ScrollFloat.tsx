@@ -1,0 +1,159 @@
+"use client"
+
+import React, { useLayoutEffect, useMemo, useRef, type CSSProperties, type ReactNode, type RefObject } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+interface ScrollFloatProps {
+  children: ReactNode;
+  scrollContainerRef?: RefObject<HTMLElement>;
+  containerClassName?: string;
+  animationDuration?: number;
+  ease?: string;
+  scrollStart?: string;
+  scrollEnd?: string;
+  stagger?: number;
+}
+
+const defaultScrollStart = 'center bottom+=50%';
+const defaultScrollEnd = 'bottom bottom-=40%';
+const mobileScrollStart = 'top 85%';
+const mobileScrollEnd = 'bottom 55%';
+
+const inheritedTextStyle: CSSProperties = {
+  color: 'inherit'
+};
+
+const clippedTextStyle: CSSProperties = {
+  ...inheritedTextStyle,
+  background: 'inherit',
+  backgroundClip: 'text',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent'
+};
+
+const getHiddenCharStyle = (usesClippedText: boolean): CSSProperties => ({
+  ...(usesClippedText ? clippedTextStyle : inheritedTextStyle),
+  opacity: 0
+});
+
+const splitTextNode = (text: string, keyPrefix: string, usesClippedText = false) => (
+  <span
+    className={`inline-block ${usesClippedText ? 'text-transparent bg-clip-text' : ''}`}
+    key={keyPrefix}
+    style={usesClippedText ? clippedTextStyle : inheritedTextStyle}
+  >
+    {text.split('').map((char, index) => (
+      <span
+        className={`scroll-float-char inline-block ${usesClippedText ? 'text-transparent bg-clip-text' : ''}`}
+        key={`${keyPrefix}-${index}`}
+        style={getHiddenCharStyle(usesClippedText)}
+      >
+        {char === ' ' ? '\u00A0' : char}
+      </span>
+    ))}
+  </span>
+);
+
+const splitNode = (node: ReactNode, keyPrefix = 'scroll-float', usesClippedText = false): ReactNode => {
+  if (typeof node === 'string') {
+    return splitTextNode(node, keyPrefix, usesClippedText);
+  }
+
+  if (typeof node === 'number') {
+    return splitTextNode(String(node), keyPrefix, usesClippedText);
+  }
+
+  if (Array.isArray(node)) {
+    return node.map((child, index) => splitNode(child, `${keyPrefix}-${index}`, usesClippedText));
+  }
+
+  if (React.isValidElement<{ children?: ReactNode; className?: unknown }>(node)) {
+    const children = node.props.children;
+    const className = typeof node.props.className === 'string' ? node.props.className : '';
+    const childUsesClippedText = usesClippedText || className.includes('bg-clip-text');
+
+    return React.cloneElement(node, {
+      key: keyPrefix,
+      children: splitNode(children, `${keyPrefix}-child`, childUsesClippedText)
+    });
+  }
+
+  return node;
+};
+
+const ScrollFloat: React.FC<ScrollFloatProps> = ({
+  children,
+  scrollContainerRef,
+  containerClassName = '',
+  animationDuration = 1,
+  ease = 'back.inOut(2)',
+  scrollStart = defaultScrollStart,
+  scrollEnd = defaultScrollEnd,
+  stagger = 0.03
+}) => {
+  const containerRef = useRef<HTMLHeadingElement>(null);
+
+  const splitText = useMemo(() => splitNode(children), [children]);
+
+  useLayoutEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const scroller = scrollContainerRef && scrollContainerRef.current ? scrollContainerRef.current : window;
+    const charElements = el.querySelectorAll('.scroll-float-char');
+    const isUsingDefaultStart = scrollStart === defaultScrollStart;
+    const isUsingDefaultEnd = scrollEnd === defaultScrollEnd;
+    const isMobileViewport = () => window.matchMedia('(max-width: 639px)').matches;
+    let isActive = true;
+
+    const animation = gsap.fromTo(
+      charElements,
+      {
+        willChange: 'opacity, transform',
+        opacity: 0,
+        yPercent: 120,
+        scaleY: 2.3,
+        scaleX: 0.7,
+        transformOrigin: '50% 0%'
+      },
+      {
+        duration: animationDuration,
+        ease,
+        opacity: 1,
+        yPercent: 0,
+        scaleY: 1,
+        scaleX: 1,
+        stagger,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: () => (isUsingDefaultStart && isMobileViewport() ? mobileScrollStart : scrollStart),
+          end: () => (isUsingDefaultEnd && isMobileViewport() ? mobileScrollEnd : scrollEnd),
+          scrub: true,
+          invalidateOnRefresh: true
+        }
+      }
+    );
+
+    document.fonts?.ready.then(() => {
+      if (isActive) ScrollTrigger.refresh();
+    });
+
+    return () => {
+      isActive = false;
+      animation.scrollTrigger?.kill();
+      animation.kill();
+    };
+  }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
+
+  return (
+    <h1 ref={containerRef} className={`overflow-hidden ${containerClassName}`}>
+      {splitText}
+    </h1>
+  );
+};
+
+export default ScrollFloat;
