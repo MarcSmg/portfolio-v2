@@ -5,7 +5,7 @@ import { handleScrollIntoView } from "@/utils/handleScrollIntoView"
 interface NavLinkProps {
     children: React.ReactNode,
     url: string,
-    styles?: string
+    styles?: string,
 }
 const NavLink = ({children, url, styles}: NavLinkProps) => {
 

@@ -13,14 +13,14 @@ const About = () => {
     <section id="about" className={`flex flex-col items-center mb-20 w-full`}>
       <div className="relative flex h-[200vh]">
         <div className="sticky top-0 flex justify-center items-center h-screen w-full overflow-visible">
-          <ScrollFloat containerClassName={`flex gap-2 text-[4rem] lg:text-[10rem]`}>
+          <ScrollFloat containerClassName={`flex flex-col gap-2 text-[4rem] lg:text-[10rem] lg:flex-row self-center`}>
             About
             <span className="mb-10 text-brand inline-block w-fit">Me</span>
           </ScrollFloat>
         </div>
       </div>
 
-      <div className="relative flex h-[200vh] mb-120">
+      <div className="relative flex h-[200vh]">
         <div className="sticky top-0 flex justify-center items-center h-screen overflow-visible">
 
           <div className={`max-w-300 text-justify`}>
