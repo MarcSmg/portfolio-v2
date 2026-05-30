@@ -129,7 +129,7 @@ CSS variables (colors, spacing, fonts)
 
 body {
   margin: 0;
-  font-family: "Work Sans",system-ui, sans-serif;
+  font-family: var(--font-work-sans), system-ui, sans-serif;
 }
 
 html {
@@ -192,9 +192,9 @@ body {
 
 @theme inline {
 
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-work-sans), system-ui, sans-serif;
 
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-work-sans), system-ui, sans-serif;
 
   --color-sidebar-ring: var(--sidebar-ring);
 

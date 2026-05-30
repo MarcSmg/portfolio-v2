@@ -1,6 +1,5 @@
 "use client"
 
-import { useInView } from "@/hooks/useInVIew";
 import type { ProjectContent } from "../../content/types"
 import AppButton from "../ui/AppButton"
 import { ArrowUpRight } from "lucide-react";

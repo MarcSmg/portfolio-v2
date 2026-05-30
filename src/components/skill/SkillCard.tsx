@@ -2,7 +2,6 @@
 
 import type { SkillObject } from "@/content/types";
 import Icon from "../ui/Icon"
-import { useInView } from "@/hooks/useInVIew";
 
 interface SkillProps {
   children?: React.ReactNode,

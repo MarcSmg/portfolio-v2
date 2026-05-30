@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
@@ -8,7 +8,11 @@ import Navbar from "@/components/layout/Navbar";
 import { Watermark } from "@/components/layout/Watermark";
 import { ContentProvider } from "@/context/ContentProvider";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const workSans = Work_Sans({
+  subsets: ["latin"],
+  variable: "--font-work-sans",
+  display: "swap",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", workSans.variable, geistSans.variable, geistMono.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col">
         <ContentProvider>
