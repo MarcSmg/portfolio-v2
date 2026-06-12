@@ -22,7 +22,6 @@ export const projectsContent: ProjectContent[] = [
         `,
         status: "in-progress",
         links: {
-            github: "https://github.com/MarcSmg/fret-wise",
             live: "https://chordopus.vercel.app"
         }
     },
