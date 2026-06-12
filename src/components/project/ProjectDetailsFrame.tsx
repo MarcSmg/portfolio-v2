@@ -87,10 +87,10 @@ export const ProjectDetailsFrame = ({ project, isVisible, onClose }: ProjectDeta
             <h3 className="text-left mb-10">{project.headline}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div className="relative //self-center shrink-0 justify-center w-full rounded-lg overflow-hidden aspect-video mb-10">
-                <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill className={`object-cover rounded-lg`} />
+                <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill className={`object-cover rounded-lg`} sizes="(max-width: 1024px) 100vw, 500px" />
               </div>
               <div className="relative //self-center shrink-0 justify-center w-full rounded-lg overflow-hidden aspect-video mb-10">
-                <Image src={`/images/projects/${project.slug}/image-1.png`} alt={project.name} fill className={`object-cover rounded-lg`} />
+                <Image src={`/images/projects/${project.slug}/image-1.png`} alt={project.name} fill className={`object-cover rounded-lg`} sizes="(max-width: 1024px) 100vw, 500px" />
               </div>
             </div>
             <p className="mb-5">{project.description}</p>
