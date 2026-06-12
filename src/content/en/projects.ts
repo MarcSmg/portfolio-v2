@@ -15,7 +15,7 @@ export const projectsContent: ProjectContent[] = [
             The goal is to allow users to search for chords by name or select from a curated list, then generate clear chord diagrams along with common inversions. 
             These diagrams will be exportable as SVG, PNG, or JPEG for reuse in arrangements, sheet music, or educational material.
         `,
-        tech: ["React", "TypeScript", "SVG"],
+        tech: ["React", "TypeScript", "Django", "REST API", "Neon", "PostgreSQL"],
         endline: `
             Chordopus is being developed as a full-stack React application, 
             with particular attention to UI clarity, performance, and the correctness of musical logic.
@@ -60,7 +60,7 @@ export const projectsContent: ProjectContent[] = [
             Plume aims to create a digital platform that enables authors to publish and monetize their work progressively. 
             By using a subscription or pay-per-use model, authors can generate revenue based on real reader engagement while gaining greater visibility for their works.
         `,
-        tech: ["React", "TypeScript", "Express.js", "Supabase", "PostgreSQL"],
+        tech: ["React", "TypeScript", "Express.js", "Prisma", "Supabase", "PostgreSQL"],
         endline: `
             Plume is being developed as a responsive web application, with particular attention to user experience, data security, and building a dynamic community around African literature.
         `,
