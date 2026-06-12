@@ -20,7 +20,7 @@ export const ProjectDetailsFrame = ({ project, isVisible, onClose }: ProjectDeta
     document.body.style.overflow = "hidden";
 
     return () => {
-      document.body.style.overflow = originalOverflow; 
+      document.body.style.overflow = originalOverflow;
     };
   }, [isVisible]);
 
@@ -85,8 +85,13 @@ export const ProjectDetailsFrame = ({ project, isVisible, onClose }: ProjectDeta
           <div className="flex flex-col text-justify overflow-auto no-scrollbar scroll-smooth">
             <h1 className="text-left mb-5">{project.name}</h1>
             <h3 className="text-left mb-10">{project.headline}</h3>
-            <div className="relative //self-center shrink-0 justify-center w-full md:w-2/3 lg:w-1/2 rounded-lg overflow-hidden aspect-video mb-10">
-                <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill className={`object-cover rounded-lg`} sizes="100vw" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="relative //self-center shrink-0 justify-center w-full rounded-lg overflow-hidden aspect-video mb-10">
+                <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill className={`object-cover rounded-lg`} />
+              </div>
+              <div className="relative //self-center shrink-0 justify-center w-full rounded-lg overflow-hidden aspect-video mb-10">
+                <Image src={`/images/projects/${project.slug}/image-1.png`} alt={project.name} fill className={`object-cover rounded-lg`} />
+              </div>
             </div>
             <p className="mb-5">{project.description}</p>
             <h3 className="text-brand font-bold mb-5">The Why</h3>
@@ -99,7 +104,7 @@ export const ProjectDetailsFrame = ({ project, isVisible, onClose }: ProjectDeta
 
         </motion.div>
       </>
-      )
+    )
     }
   </div>
 };

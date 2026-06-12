@@ -60,7 +60,7 @@ export const projectsContent: ProjectContent[] = [
             Plume aims to create a digital platform that enables authors to publish and monetize their work progressively. 
             By using a subscription or pay-per-use model, authors can generate revenue based on real reader engagement while gaining greater visibility for their works.
         `,
-        tech: ["React", "TypeScript", "Express.js", "Prisma", "Supabase", "PostgreSQL"],
+        tech: ["React", "TypeScript", "REST API", "Express.js", "Prisma", "Supabase", "PostgreSQL"],
         endline: `
             Plume is being developed as a responsive web application, with particular attention to user experience, data security, and building a dynamic community around African literature.
         `,
@@ -82,7 +82,7 @@ export const projectsContent: ProjectContent[] = [
             The goal is to provide a user-friendly interface for creating QR codes with customizable options, 
             including size, color, and error correction level.
         `,
-        tech: ["React", "TypeScript", "QRCode", "Laravel", "REST API", "MySQL"],
+        tech: ["React", "TypeScript", "Laravel", "REST API", "MySQL"],
         endline: `
             QRIt is being developed as a responsive web application, focusing on ease of use and visual appeal.
         `,
