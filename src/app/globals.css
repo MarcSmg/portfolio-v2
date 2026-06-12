@@ -50,6 +50,7 @@ CSS variables (colors, spacing, fonts)
     }
     to {
       transform: translateY(-100%);
+      opacity: 0;
     }
   }
 

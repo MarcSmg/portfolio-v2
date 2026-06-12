@@ -3,8 +3,8 @@ import type { ProjectContent } from "../types";
 
 export const projectsContent: ProjectContent[] = [
     {
-        slug: "fretwise",
-        name: "Fretwise",
+        slug: "chordopus",
+        name: "Chordopus",
         headline: "Guitar chord diagrams for arrangers",
         description: "A web application that generates guitar chord diagrams from user input.",
         problem: `
@@ -17,7 +17,7 @@ export const projectsContent: ProjectContent[] = [
         `,
         tech: ["React", "TypeScript", "SVG"],
         endline: `
-            Fretwise is being developed as a full-stack React application, 
+            ChordOpus is being developed as a full-stack React application, 
             with particular attention to UI clarity, performance, and the correctness of musical logic.
         `,
         status: "planned",

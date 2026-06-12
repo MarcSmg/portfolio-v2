@@ -7,7 +7,7 @@ interface IconProps {
     style?: string
 }
 
-const Icon = ({name, size = 10, style = "bg-white"}: IconProps) => {
+const Icon = ({name, size = 10, style = "//bg-white"}: IconProps) => {
 
   const dimension = `${size * 0.25}rem`;
 

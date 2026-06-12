@@ -6,6 +6,7 @@ import AppButton from "../ui/AppButton";
 import { ArrowRight, Download } from "lucide-react";
 import { handleScrollIntoView } from "@/utils/handleScrollIntoView";
 import BlurText from "../ui/BlurText";
+import handleDownloadResume from "@/utils/handleDownloadResume";
 
 const Hero = () => {
   const { content } = useContent();
@@ -33,7 +34,7 @@ const Hero = () => {
           <a className="w-full" href="" onClick={(e) => handleScrollIntoView(e, "#projects")} >
             <AppButton styles={` ${buttonsStyle}`} variant="primary">See my projects<ArrowRight className="size-8 2xl:size-5"/></AppButton> 
           </a>
-          <AppButton styles={` ${buttonsStyle}`} variant="secondary">Download my resume <Download className="size-8 2xl:size-5" /></AppButton>         
+          <AppButton onClick={handleDownloadResume} styles={` ${buttonsStyle}`} variant="secondary">Download my resume <Download className="size-8 2xl:size-5" /></AppButton>         
         </div>
       </div>
     </section>

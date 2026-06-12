@@ -4,7 +4,7 @@ export interface ProjectImages {
 }
 
 export const projectImages: Record<string,ProjectImages> = {
-    fretwise: {
+    chordopus: {
         cover: "",
         gallery: []
     }

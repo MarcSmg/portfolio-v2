@@ -3,8 +3,8 @@ import type { ProjectContent } from "../types";
 
 export const projectsContent: ProjectContent[] = [
     {
-        slug: "fretwise",
-        name: "Fretwise",
+        slug: "chordopus",
+        name: "Chordopus",
         headline: "Guitar chord diagrams for arrangers",
         description: "A web application that generates guitar chord diagrams from user input.",
         problem: `
@@ -17,13 +17,13 @@ export const projectsContent: ProjectContent[] = [
         `,
         tech: ["React", "TypeScript", "SVG"],
         endline: `
-            Fretwise is being developed as a full-stack React application, 
+            Chordopus is being developed as a full-stack React application, 
             with particular attention to UI clarity, performance, and the correctness of musical logic.
         `,
         status: "in-progress",
         links: {
             github: "https://github.com/MarcSmg/fret-wise",
-            live: "https://fret-wise.vercel.app"
+            live: "https://chordopus.vercel.app"
         }
     },
     {
@@ -46,6 +46,28 @@ export const projectsContent: ProjectContent[] = [
         status: "completed",
         links: {
             live: "https://sportlyconnect.vercel.app"
+        }
+    },
+    {
+        slug: "plume",
+        name: "Plume",
+        headline: "A digital platform for African literature",
+        description: "Plume is a digital infrastructure dedicated to promoting Beninese and African literature. It does more than host texts: it creates an economic ecosystem around writing, allowing authors to progressively monetize their work based on real engagement.",
+        problem: `
+            The literature market in Africa faces many challenges, including limited distribution, piracy, and a lack of support for emerging authors. 
+            Existing platforms do not effectively address these issues, leaving many literary talents without growth opportunities.
+        `,
+        solution: `
+            Plume aims to create a digital platform that enables authors to publish and monetize their work progressively. 
+            By using a subscription or pay-per-use model, authors can generate revenue based on real reader engagement while gaining greater visibility for their works.
+        `,
+        tech: ["React", "TypeScript", "Express.js", "Supabase", "PostgreSQL"],
+        endline: `
+            Plume is being developed as a responsive web application, with particular attention to user experience, data security, and building a dynamic community around African literature.
+        `,
+        status: "in-progress",
+        links: {
+            live: "https://plume-benin.vercel.app"
         }
     },
     {
