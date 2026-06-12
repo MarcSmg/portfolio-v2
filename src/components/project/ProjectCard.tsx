@@ -4,13 +4,15 @@ import type { ProjectContent } from "../../content/types"
 import AppButton from "../ui/AppButton"
 import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
+import Image from "next/image";
+import { useState } from "react";
 
 interface ProjectProps {
-  project: ProjectContent,
-  onOpenDetails: () => void,
-  onCloseDetails: () => void,
-  children?: React.ReactNode,
-  isContainerVisible?: boolean,
+  project: ProjectContent;
+  onOpenDetails: () => void;
+  onCloseDetails: () => void;
+  children?: React.ReactNode;
+  isContainerVisible?: boolean;
 }
 
 const statuses = {
@@ -20,21 +22,26 @@ const statuses = {
 };
 
 const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProps) => {
-
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <>
-      <div className={` 
+      <div
+        className={` 
           ${isContainerVisible ? 'animate-fade-in-up' : 'translate-y-20'}
           opacity-0
           w-full h-full
-          bg-ui-surface border outline-5 border-brand-muted px-5 py-10 rounded-2xl
-          shadow-brand-emphasis/
+          bg-ui-surface border border-brand-muted px-5 py-10 rounded-2xl
+          shadow-brand-emphasis
           hover:-translate-y-1/ hover:shadow-lg/90 transition-all duration-300
           `}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         <div className="flex flex-col gap-2 h-full justify-between">
+          <div className="relative w-full rounded-lg overflow-hidden aspect-video">
+            <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill className={`object-cover hover:scale-105 ${isHovered ? 'scale-105' : 'scale-100'} transition-transform duration-300`} sizes="100vw" />
+          </div>
           <div className="flex flex-col gap-2">
-
             <div>
               <h2 className="font-semibold text-brand">{project.name} <span className="text-sm">({statuses[project.status]})</span></h2>
               <p>{project.headline}</p>

@@ -2,6 +2,8 @@
 
 import type { ProjectContent } from "@/content/types"
 import { useEffect } from "react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
 
 type ProjectDetailsProps = {
   project: ProjectContent;
@@ -25,24 +27,35 @@ export const ProjectDetailsFrame = ({ project, isVisible, onClose }: ProjectDeta
   return <div className={`relative flex flex-col`} >
     {isVisible && (
       <>
-        <div
+        <motion.div
+          // Backdrop
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
           className="fixed inset-0 z-60 bg-black opacity-50"
           onClick={onClose}
-        ></div>
+        ></motion.div>
 
-        <div
+        <motion.div
+          // Modal content
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.3 }}
           className={`
-            fixed inset-3 flex flex-col z-70 p-8
+            fixed inset-0 my-5 mx-5 flex flex-col z-70 px-5 py-10
             rounded-4xl
             shadow-black shadow-lg/50 bg-linear-to-r from-brand-muted from-[-150%] via-ui-surface-dark via-10% to-ui-surface
-            md:inset-30 md:p-20
+            //md:inset-20 md:px-20
           `}
         >
 
           <button
+            // Close button
             className={`
               absolute top-5 right-5
-              flex flex-col items-center justify-center
+              flex flex-col items-center justify-center z-50
               size-10 cursor-pointer 
               bg-ui-surface rounded-full
               hover:bg-brand-muted/50
@@ -69,21 +82,24 @@ export const ProjectDetailsFrame = ({ project, isVisible, onClose }: ProjectDeta
             />
           </button>
 
-          <div className="text-justify overflow-auto no-scrollbar rounded-2xl">
-            <h1 className="text-left">{project.name}</h1>
-            <h3>{project.headline}</h3>
-            <div className="h-50 w-full">
-              Project image
+          <div className="flex flex-col text-justify overflow-auto no-scrollbar scroll-smooth">
+            <h1 className="text-left mb-5">{project.name}</h1>
+            <h3 className="text-left mb-10">{project.headline}</h3>
+            <div className="relative //self-center shrink-0 justify-center w-full md:w-2/3 lg:w-1/2 rounded-lg overflow-hidden aspect-video mb-10">
+                <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill className={`object-cover rounded-lg`} sizes="100vw" />
             </div>
-            <p>{project.description}</p>
-            <p>{project.problem}</p>
-            <p>{project.solution}</p>
-            <p>{project.endline}</p>
+            <p className="mb-5">{project.description}</p>
+            <h3 className="text-brand font-bold mb-5">The Why</h3>
+            <p className="mb-5">{project.problem}</p>
+            <h3 className="text-brand font-bold mb-5">Our Solution</h3>
+            <p className="mb-5">{project.solution}</p>
+            <p className="mb-5">{project.endline}</p>
 
           </div>
 
-        </div>
-      </>)
+        </motion.div>
+      </>
+      )
     }
   </div>
 };
