@@ -7,6 +7,7 @@ import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { useState } from "react";
 import { iconMap } from "@/data/iconMap";
+import { NoiseTexture } from "@/components/magicui/noise-texture";
 
 interface ProjectProps {
   project: ProjectContent;
@@ -27,9 +28,10 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
   return (
     <>
       <div
-        className={` 
+        className={`
           ${isContainerVisible ? 'animate-fade-in-up' : 'translate-y-20'}
           opacity-0
+          relative overflow-hidden
           w-full h-full
           bg-ui-surface border border-brand-muted px-5 py-10 rounded-2xl
           shadow-brand-emphasis
@@ -38,6 +40,7 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
+        <NoiseTexture opacity={0.2} />
         <div className="flex flex-col gap-2 h-full">
           <div className="relative w-full rounded-lg overflow-hidden aspect-video mb-10">
             <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill sizes="(max-width: 1024px) 100vw, 500px" className={`object-cover hover:scale-105 ${isHovered ? 'scale-105' : 'scale-100'} transition-transform duration-300`} />
