@@ -40,7 +40,7 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <NoiseTexture opacity={0.25} />
+        <NoiseTexture opacity={0.2} />
         <div className="flex flex-col gap-2 h-full">
           <div className="relative w-full rounded-lg overflow-hidden aspect-video mb-5">
             <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill sizes="(max-width: 1024px) 100vw, 500px" className={`object-cover hover:scale-105 ${isHovered ? 'scale-105' : 'scale-100'} transition-transform duration-300`} />
