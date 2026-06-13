@@ -33,16 +33,16 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
           opacity-0
           relative overflow-hidden
           w-full h-full
-          bg-ui-surface border border-brand-muted px-5 py-10 rounded-2xl
+          bg-ui-surface border border-brand-muted p-5  rounded-2xl
           shadow-brand-emphasis
           hover:-translate-y-1/ hover:shadow-lg/90 transition-all duration-300
           `}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <NoiseTexture opacity={0.2} />
+        <NoiseTexture opacity={0.25} />
         <div className="flex flex-col gap-2 h-full">
-          <div className="relative w-full rounded-lg overflow-hidden aspect-video mb-10">
+          <div className="relative w-full rounded-lg overflow-hidden aspect-video mb-5">
             <Image src={`/images/projects/${project.slug}/preview.png`} alt={project.name} fill sizes="(max-width: 1024px) 100vw, 500px" className={`object-cover hover:scale-105 ${isHovered ? 'scale-105' : 'scale-100'} transition-transform duration-300`} />
           </div>
           <div className="flex flex-col gap-2">
@@ -61,7 +61,7 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
               {project.tech.map((t) =>
                 <Image
                   key={t}
-                  className={"rounded-lg p-px h-10 w-auto"}
+                  className={"p-px h-10 w-auto"}
                   src={iconMap[t.toLowerCase().replaceAll(' ', '')]}
                   alt=""
                   width={0}
