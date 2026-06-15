@@ -14,7 +14,7 @@ const SkillCard = ({ children, skill, index, isContainerVisible }: SkillProps) =
 
   const level = isContainerVisible && skill.level ? skill.level : 0;
 
-  const hoverStyles = " transition-all duration-100 shadow-brand-emphasis hover:border-brand hover:shadow-lg transition-all duration-200 ease-in-out";
+  const hoverStyles = " transition-all duration-100 shadow-brand-emphasis hover:rounded-4xl //hover:border-brand //hover:shadow-lg transition-all duration-200 ease-in-out";
 
   return (
 
@@ -23,21 +23,21 @@ const SkillCard = ({ children, skill, index, isContainerVisible }: SkillProps) =
       className={`
     ${hoverStyles} ${isContainerVisible ? 'animate-fade-in-up' : 'translate-y-20'}
     opacity-0 
-    flex gap-5 items-center justify-between text-center bg-ui-surface border border-brand-muted py-7 px-5 rounded-xl w-full h-fit 
+    flex gap-5 items-center justify-between text-center bg-ui-surface rounded-xl border border-brand-muted py-7 px-5 w-full h-fit 
     transition-all duration-300 [animation-delay:var(--delay)]
   `}>
       <span><Icon size={15} name={skill.name} /></span>
-      <span className="flex flex-col gap-2 justify-start items-start w-full">
-        <p className="text-xl justify-center content-center">{skill.name}</p>
-        <span>{children}</span>
-        {skill.level &&
+      <span className="flex flex-col gap-2 justify-center items-start w-full">
+        <h3 className="justify-center content-center">{skill.name}</h3>
+        {/* <span>{children}</span> */}
+        {/* {skill.level &&
           <div className="w-full flex items-center justify-center gap-4">
             <div className="h-2 flex-1 rounded-full bg-brand-muted">
               <div className="rounded-full bg-brand h-full transition-all duration-1500" style={{ width: `${level}%` }}></div>
             </div>
             <span>{skill.level} %</span>
           </div>
-        }
+        } */}
       </span>
 
     </div>

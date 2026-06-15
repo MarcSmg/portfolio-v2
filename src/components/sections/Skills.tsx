@@ -4,6 +4,7 @@ import { useInView } from "@/hooks/useInVIew";
 import { useContent } from "../../context/ContentContext"
 import SkillCard from "../skill/SkillCard";
 import ScrollFloat from "../ui/ScrollFloat";
+import { RadialLayout } from "../skill/RadialLayout";
 
 const Skills = () => {
   const { content } = useContent();
@@ -18,7 +19,10 @@ const Skills = () => {
 
   return (
     <section id="skills" className=" flex flex-col w-full mb-100 ">
-      <div className="relative flex h-[200vh] mb-100">
+
+      {/* <RadialLayout skills={skillsContent.languages} /> */}
+
+      <div className=" flex relative h-[200vh] mb-100">
         <div className="sticky top-0 flex justify-center items-center h-screen w-full overflow-visible">
           <ScrollFloat containerClassName="flex flex-col gap-2 text-[4rem] lg:text-[10rem] self-center md:flex-row">Tools &<span className="mb-10 text-brand">Skills</span></ScrollFloat>
         </div>
