@@ -15,7 +15,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="w-full mb-10">
-      <ScrollFloat containerClassName="mb-10 flex flex-col gap-1 lg:text-[4.6rem]">{contactContent.callToAction.question}<span className="mb-10 text-brand inline-block w-fit">{contactContent.callToAction.action}</span></ScrollFloat>
+      <ScrollFloat containerClassName="flex flex-col gap-1 lg:text-[4.6rem]">{contactContent.callToAction.question}<span className="mb-10 text-brand inline-block w-fit">{contactContent.callToAction.action}</span></ScrollFloat>
       <div className="grid gap-5 lg:w-100">
         <ContactLink variant="primary" styles={`${contactLinkStyles}`} url={contactContent.email}>
           <Icon style="" name="gmail"/>
