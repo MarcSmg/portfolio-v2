@@ -23,7 +23,7 @@ const SkillCard = ({ children, skill, index, isContainerVisible }: SkillProps) =
       className={`
     ${hoverStyles} ${isContainerVisible ? 'animate-fade-in-up' : 'translate-y-20'}
     opacity-0 
-    flex gap-5 items-center justify-between text-center bg-ui-surface rounded-xl border border-brand-muted py-7 px-5 w-full h-fit 
+    flex gap-5 items-center justify-between text-center bg-ui-surface rounded-xl border border-brand-muted py-4 px-4 w-full h-fit 
     transition-all duration-300 [animation-delay:var(--delay)]
   `}>
       <span><Icon size={15} name={skill.name} /></span>

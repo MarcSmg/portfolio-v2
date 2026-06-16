@@ -7,6 +7,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { handleScrollIntoView } from "@/utils/handleScrollIntoView";
 import BlurText from "../ui/BlurText";
 import handleDownloadResume from "@/utils/handleDownloadResume";
+import { OriginButtonPrimary } from "@/components/ui/OriginButtonPrimary";
 
 const Hero = () => {
   const { content } = useContent();
@@ -14,7 +15,7 @@ const Hero = () => {
   const buttonsStyle = "flex gap-5 justify-between items-center py-5 px-5 w-full text-lg font-semibold transition";
 
   return (
-    <section id="hero" className=" flex flex-col justify-center items-center pt-25 gap-25 mb-40 lg:flex-row lg:px-0 lg:py-50 " >
+    <section id="hero" className=" flex flex-col justify-center items-center pt-25 gap-25 mb-40 lg:flex-row lg:px-0 lg:py-40 " >
       <Avatar/>
       <div className="flex flex-col justify-center items-center">
         <div className=" flex flex-col mb-10 justify-center items-center text-center lg:text-left lg:items-start">
@@ -32,7 +33,7 @@ const Hero = () => {
     
         <div className="flex flex-col w-full gap-10 xl:flex-row">
           <a className="w-full" href="" onClick={(e) => handleScrollIntoView(e, "#projects")} >
-            <AppButton styles={` ${buttonsStyle}`} variant="primary">See my projects<ArrowRight className="size-8 2xl:size-5"/></AppButton> 
+            <OriginButtonPrimary className={`${buttonsStyle} h-full`}>See my projects<ArrowRight className="size-8 2xl:size-5"/></OriginButtonPrimary>
           </a>
           <AppButton onClick={handleDownloadResume} styles={` ${buttonsStyle}`} variant="secondary">Download my resume <Download className="size-8 2xl:size-5" /></AppButton>         
         </div>

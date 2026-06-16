@@ -169,13 +169,6 @@ body {
     @apply text-[1.5rem] max-sm:text-[1.3rem] lg:text-2xl;
   }
 
-  /* body {
-    @apply bg-ui-bg;
-  } */
-
-  p {
-    @apply text-lg ;
-  }
   body {
     @apply bg-background text-foreground;
 

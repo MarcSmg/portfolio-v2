@@ -6,8 +6,8 @@ import { ArrowUpRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 import { useState } from "react";
-import { iconMap } from "@/data/iconMap";
 import { NoiseTexture } from "@/components/magicui/noise-texture";
+import TechIcon from "./TechIcon";
 
 interface ProjectProps {
   project: ProjectContent;
@@ -55,32 +55,22 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
 
           </div>
 
-          <div className="mt-auto flex flex-col gap-5">
+          <div className="mt-auto flex flex-col">
             <div className="flex flex-wrap gap-5 w-fit mb-5">
-              {/* {iconMap[t.toLowerCase()} */}
-              {project.tech.map((t) =>
-                <Image
-                  key={t}
-                  className={"p-px h-10 w-auto"}
-                  src={iconMap[t.toLowerCase().replaceAll(' ', '')]}
-                  alt=""
-                  width={0}
-                  height={0}
-                />
-              )}
+              {project.tech.map((t) => <TechIcon key={t} name={t} />)}
             </div>
             <div className="flex flex-col gap-2 justify-between md:flex-row md:items-center">
               <div className="flex gap-2 justify-between md:justify-start">
 
                 {project.links?.live && (
                   <a href={project.links?.live} target="_blank">
-                    <AppButton variant="primary" styles=" flex gap-1 text-sm font-semibold px-5 py-3 transition">Live Demo<ArrowUpRight size={20} /> </AppButton>
+                    <AppButton variant="primary" styles=" flex gap-1 rounded-lg text-sm font-semibold px-5 py-3 transition">Live Demo<ArrowUpRight size={20} /> </AppButton>
                   </a>
                 )}
 
                 <AppButton
                   variant="secondary"
-                  styles=" flex gap-1 text-sm font-semibold px-5 py-3 transition"
+                  styles=" flex gap-1 rounded-lg text-sm font-semibold px-5 py-3 transition"
                   onClick={onOpenDetails}
                 >
                   Details
@@ -88,7 +78,7 @@ const ProjectCard = ({ project, onOpenDetails, isContainerVisible }: ProjectProp
               </div>
               {project.links?.github && (
                 <a className="flex justify-en" href={project.links?.github} target="_blank">
-                  <AppButton variant="secondary" styles=" p-2 hover:brightness-120 transition"><FaGithub className="fill-white" size={25} /></AppButton>
+                  <AppButton variant="secondary" styles=" p-2 rounded-lg hover:brightness-120 transition"><FaGithub className="fill-white" size={25} /></AppButton>
                 </a>
               )}
             </div>

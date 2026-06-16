@@ -3,7 +3,7 @@
 import { useInView } from "@/hooks/useInVIew";
 import { useContent } from "../../context/ContentContext"
 import SkillCard from "../skill/SkillCard";
-import ScrollFloat from "../ui/ScrollFloat";
+import SectionTitle from "../ui/SectionTitle";
 import { RadialLayout } from "../skill/RadialLayout";
 
 const Skills = () => {
@@ -22,11 +22,7 @@ const Skills = () => {
 
       {/* <RadialLayout skills={skillsContent.languages} /> */}
 
-      <div className=" flex relative h-[200vh] mb-100">
-        <div className="sticky top-0 flex justify-center items-center h-screen w-full overflow-visible">
-          <ScrollFloat containerClassName="flex flex-col gap-2 text-[4rem] lg:text-[10rem] self-center md:flex-row">Tools &<span className="mb-10 text-brand">Skills</span></ScrollFloat>
-        </div>
-      </div>
+      <SectionTitle plain="Tools &" highlight="Skills" className="mb-100" />
       <div className="flex flex-col p-3">
         <div >
           <h2>Languages</h2>

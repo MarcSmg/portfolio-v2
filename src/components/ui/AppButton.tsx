@@ -1,4 +1,6 @@
 import React, { type ComponentPropsWithRef } from 'react'
+import { OriginButtonPrimary } from './OriginButtonPrimary'
+import { OriginButtonSecondary } from './OriginButtonSecondary'
 
 type ButtonVariant = "primary" | "secondary" | "default";
 
@@ -8,21 +10,28 @@ interface AppButtonProps extends ComponentPropsWithRef<"button"> {
     styles?: string,
 }
 
-const AppButton = ({ variant = "default", children, styles = "", onClick }: AppButtonProps) => {
+const AppButton = ({ variant = "default", children, styles = "", onClick, ...rest }: AppButtonProps) => {
+    if (variant === "primary") {
+        return (
+            <OriginButtonPrimary className={styles} onClick={onClick} {...rest}>
+                {children}
+            </OriginButtonPrimary>
+        )
+    }
 
-    let baseStyles = styles;
-    baseStyles += baseStyles.includes("rounded") ? "" : " rounded-lg";
-
-    const variantStyles: Record<ButtonVariant, string> = {
-        "default": "",
-        "primary": "bg-accent hover:bg-brand-emphasis",
-        "secondary": "bg-brand-muted border border-brand-muted hover:bg-ui-surface text-white"
+    if (variant === "secondary") {
+        return (
+            <OriginButtonSecondary className={styles} onClick={onClick} {...rest}>
+                {children}
+            </OriginButtonSecondary>
+        )
     }
 
     return (
         <button
-            className={`${baseStyles} ${variantStyles[variant]} ${baseStyles} cursor-pointer`}
+            className={`${styles} cursor-pointer`}
             onClick={onClick}
+            {...rest}
         >
             {children}
         </button>

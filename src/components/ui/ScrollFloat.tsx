@@ -39,23 +39,35 @@ const getHiddenCharStyle = (usesClippedText: boolean): CSSProperties => ({
   opacity: 0
 });
 
-const splitTextNode = (text: string, keyPrefix: string, usesClippedText = false) => (
-  <span
-    className={`inline-block ${usesClippedText ? 'text-transparent bg-clip-text' : ''}`}
-    key={keyPrefix}
-    style={usesClippedText ? clippedTextStyle : inheritedTextStyle}
-  >
-    {text.split('').map((char, index) => (
-      <span
-        className={`scroll-float-char inline-block ${usesClippedText ? 'text-transparent bg-clip-text' : ''}`}
-        key={`${keyPrefix}-${index}`}
-        style={getHiddenCharStyle(usesClippedText)}
-      >
-        {char === ' ' ? '\u00A0' : char}
-      </span>
-    ))}
-  </span>
-);
+const splitTextNode = (text: string, keyPrefix: string, usesClippedText = false) => {
+  const words = text.split(' ');
+  const charClass = `scroll-float-char inline-block ${usesClippedText ? 'text-transparent bg-clip-text' : ''}`;
+
+  return (
+    <span
+      className={`inline ${usesClippedText ? 'text-transparent bg-clip-text' : ''}`}
+      key={keyPrefix}
+      style={usesClippedText ? clippedTextStyle : inheritedTextStyle}
+    >
+      {words.map((word, wi) => (
+        <span key={`${keyPrefix}-w${wi}`} className="inline-block whitespace-nowrap" style={inheritedTextStyle}>
+          {word.split('').map((char, ci) => (
+            <span
+              className={charClass}
+              key={`${keyPrefix}-w${wi}-${ci}`}
+              style={getHiddenCharStyle(usesClippedText)}
+            >
+              {char}
+            </span>
+          ))}
+          {wi < words.length - 1 && (
+            <span className={charClass} style={getHiddenCharStyle(usesClippedText)}>&nbsp;</span>
+          )}
+        </span>
+      ))}
+    </span>
+  );
+};
 
 const splitNode = (node: ReactNode, keyPrefix = 'scroll-float', usesClippedText = false): ReactNode => {
   if (typeof node === 'string') {
@@ -132,7 +144,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
           scroller,
           start: () => (isUsingDefaultStart && isMobileViewport() ? mobileScrollStart : scrollStart),
           end: () => (isUsingDefaultEnd && isMobileViewport() ? mobileScrollEnd : scrollEnd),
-          scrub: true,
+          scrub: 1,
           invalidateOnRefresh: true
         }
       }
