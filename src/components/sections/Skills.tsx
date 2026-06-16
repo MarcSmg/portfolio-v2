@@ -22,7 +22,7 @@ const Skills = () => {
 
       {/* <RadialLayout skills={skillsContent.languages} /> */}
 
-      <SectionTitle plain="Tools &" highlight="Skills" className="mb-100" />
+      <SectionTitle plain="Tools &" highlight="Skills"/>
       <div className="flex flex-col p-3">
         <div >
           <h2>Languages</h2>

@@ -126,9 +126,9 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
       {
         willChange: 'opacity, transform',
         opacity: 0,
-        yPercent: 80,
-        scaleY: 1.6,
-        scaleX: 0.85,
+        yPercent: 60,
+        scaleY: 1.4,
+        scaleX: 0.88,
         transformOrigin: '50% 0%'
       },
       {
@@ -144,7 +144,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
           scroller,
           start: () => (isUsingDefaultStart && isMobileViewport() ? mobileScrollStart : scrollStart),
           end: () => (isUsingDefaultEnd && isMobileViewport() ? mobileScrollEnd : scrollEnd),
-          scrub: 1,
+          scrub: 0.4,
           invalidateOnRefresh: true
         }
       }

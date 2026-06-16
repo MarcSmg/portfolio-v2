@@ -8,11 +8,11 @@ import Image from "next/image";
 import { SpaceBackground } from "@/components/ui/SpaceBackground";
 
 const navLinks = [
-  { href: "#hero",     icon: <House size={28} />,        label: "HOME"     },
+  { href: "#hero", icon: <House size={28} />, label: "HOME" },
   { href: "#projects", icon: <Presentation size={28} />, label: "PROJECTS" },
-  { href: "#about",    icon: <BookOpenText size={28} />,  label: "ABOUT ME" },
-  { href: "#skills",   icon: <BrainCircuit size={28} />, label: "SKILLS"   },
-  { href: "#contact",  icon: <Mail size={28} />,          label: "CONTACT"  },
+  { href: "#about", icon: <BookOpenText size={28} />, label: "ABOUT ME" },
+  { href: "#skills", icon: <BrainCircuit size={28} />, label: "SKILLS" },
+  { href: "#contact", icon: <Mail size={28} />, label: "CONTACT" },
 ];
 
 const Navbar = () => {
@@ -66,7 +66,7 @@ const Navbar = () => {
 
       {/* Mobile full-screen overlay — rendered before top bar so top bar stays on top */}
       <div
-        className="lg:hidden fixed inset-0 h-[88dvh] m-2 rounded-2xl overflow-hidden flex flex-col items-center justify-center"
+        className="lg:hidden fixed inset-0 h-[95dvh] m-2 rounded-2xl overflow-hidden flex flex-col items-center justify-center"
         style={{
           clipPath: open
             ? "circle(200vmax at calc(100% - 2rem) 2rem)"
@@ -80,24 +80,24 @@ const Navbar = () => {
         <ul className="relative z-10 flex flex-col w-full px-10">
           {navLinks.map(({ href, icon, label }, i) => (
             <Fragment key={href}>
-            <li
-              style={{
-                opacity: open ? 1 : 0,
-                transform: open ? "translateY(0)" : "translateY(1.5rem)",
-                transition: `opacity 0.4s ease ${0.15 + i * 0.07}s, transform 0.4s ease ${0.15 + i * 0.07}s`,
-              }}
-              className="w-full text-center py-10"
-            >
-              <a
-                className="flex gap-4 items-center text-2xl font-semibold hover:text-brand transition-colors duration-200"
-                href=""
-                onClick={(e) => handleLinkClick(e, href)}
+              <li
+                style={{
+                  opacity: open ? 1 : 0,
+                  transform: open ? "translateY(0)" : "translateY(1.5rem)",
+                  transition: `opacity 0.4s ease ${0.15 + i * 0.07}s, transform 0.4s ease ${0.15 + i * 0.07}s`,
+                }}
+                className="w-full text-center py-10"
               >
-                {icon}
-                {label}
-              </a>
-            </li>
-              <hr className="border-t border-zinc-600" />
+                <a
+                  className="flex gap-4 items-center text-2xl font-semibold hover:text-brand transition-colors duration-200"
+                  href=""
+                  onClick={(e) => handleLinkClick(e, href)}
+                >
+                  {icon}
+                  {label}
+                </a>
+              </li>
+              {i !== navLinks.length - 1 && <hr className="border-t border-zinc-600" />}
             </Fragment>
           ))}
         </ul>

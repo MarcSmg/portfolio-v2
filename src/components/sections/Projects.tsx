@@ -19,7 +19,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className=" flex flex-col mb-40 scroll-m-10 md:mb-100">
-      <SectionTitle plain="Recent" highlight="Projects" className="mb-120" />
+      <SectionTitle plain="Recent" highlight="Projects" />
       <AnimatePresence>
         <motion.div ref={ref} className="relative flex">
           {/* <MagicBento
