@@ -101,7 +101,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   scrollContainerRef,
   containerClassName = '',
   animationDuration = 1,
-  ease = 'back.inOut(2)',
+  ease = 'power3.inOut',
   scrollStart = defaultScrollStart,
   scrollEnd = defaultScrollEnd,
   stagger = 0.03
@@ -126,9 +126,9 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
       {
         willChange: 'opacity, transform',
         opacity: 0,
-        yPercent: 120,
-        scaleY: 2.3,
-        scaleX: 0.7,
+        yPercent: 80,
+        scaleY: 1.6,
+        scaleX: 0.85,
         transformOrigin: '50% 0%'
       },
       {

@@ -11,31 +11,31 @@ const Contact = () => {
   const {content} = useContent();
   const contactContent = content.contactContent;
 
-  const contactLinkStyles = "bg-ui-surface w-full p-3 flex items-center justify-between gap-5 text-md hover:bg-brand-emphasis transition";
+  const contactLinkStyles = "bg-ui-surface w-full p-3 flex items-center justify-between gap-5 rounded-xl text-md hover:bg-brand-emphasis transition";
 
   return (
     <section id="contact" className="w-full mb-10">
       <ScrollFloat containerClassName="mb-10 flex flex-col gap-1 lg:text-[4.6rem]">{contactContent.callToAction.question}<span className="mb-10 text-brand inline-block w-fit">{contactContent.callToAction.action}</span></ScrollFloat>
       <div className="grid gap-5 lg:w-100">
-        <ContactLink styles={`${contactLinkStyles}`} url={contactContent.email}>
+        <ContactLink variant="primary" styles={`${contactLinkStyles}`} url={contactContent.email}>
           <Icon style="" name="gmail"/>
           <span>Send me a mail</span>
           <ArrowUpRight/>
         </ContactLink>
 
-        <ContactLink styles={`${contactLinkStyles}`} url={contactContent.linkedin}>
+        <ContactLink variant="primary" styles={`${contactLinkStyles}`} url={contactContent.linkedin}>
           <FaLinkedin className="fill-[#0077B5] rounded-lg p-px stroke-white bg-white stroke-2" size={40}/> 
           <span>Let&apos;s connect on LinkedIn</span>
           <ArrowUpRight/>
         </ContactLink>
 
-        <ContactLink styles={`${contactLinkStyles}`} url={contactContent.github}>
+        <ContactLink variant="primary" styles={`${contactLinkStyles}`} url={contactContent.github}>
           <Icon name="github"/> 
           <span>My GitHub profile</span>
           <ArrowUpRight/>
         </ContactLink>
 
-        <ContactLink styles={`${contactLinkStyles}`} url={contactContent.whatsapp}>
+        <ContactLink variant="primary" styles={`${contactLinkStyles}`} url={contactContent.whatsapp}>
           <Icon style="" name="whatsapp" /> 
           <span>WhatsApp</span>
           <ArrowUpRight/>
