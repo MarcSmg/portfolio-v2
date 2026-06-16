@@ -16,7 +16,7 @@ const About = () => {
       <SectionTitle plain="About" highlight="Me" />
 
       <div className="relative flex h-[200vh]">
-        <div className="sticky top-0 flex justify-center items-center h-screen overflow-visible">
+        <div className="sticky top-0 flex justify-center items-center h-dvh overflow-visible">
 
           <div ref={ref} className={`max-w-300 text-justify`}>
             {isVisible && (

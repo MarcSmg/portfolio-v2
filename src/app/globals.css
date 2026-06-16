@@ -131,6 +131,7 @@ CSS variables (colors, spacing, fonts)
 body {
   margin: 0;
   font-family: var(--font-work-sans), system-ui, sans-serif;
+  overscroll-behavior: none;
 }
 
 html {

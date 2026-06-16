@@ -41,7 +41,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ContentProvider>
-          <div className="flex flex-col min-h-screen items-center justify-center z-0 relative">
+          <div className="flex flex-col min-h-dvh items-center justify-center z-0 relative">
 
             <Navbar />
             <Watermark />
